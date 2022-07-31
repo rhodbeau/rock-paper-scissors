@@ -71,6 +71,7 @@
 
         //Game to call play round 5x
         function game() {
+            //initialize variables
             let userScore = 0;
             let cpuScore = 0;
             let tie = 0;
@@ -90,11 +91,11 @@
                 //Update scores and ouput the winner of round
                 if (winner.startsWith("You win")){
                     userScore++;
-                    console.log(winner)
+                    console.log(winner);
                 }
                 else if (winner.startsWith("You lose")) {
                     cpuScore++;
-                    console.log(winner)
+                    console.log(winner);
                 }
                 else {
                     tie++;
@@ -104,13 +105,13 @@
 
             //Check scores and ouput winner of game
             if (userScore > cpuScore) {
-                console.log("YOU WON!")
+                console.log("YOU WON!");
             }
             else if (cpuScore > userScore) {
-                console.log("You lost, sorry.")
+                console.log("You lost, sorry.");
             }
             else {
-                console.log("It ends in a tie. Not bad.")
+                console.log("It ends in a tie. Not bad.");
             }
         }
 
