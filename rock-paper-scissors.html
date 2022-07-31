@@ -8,23 +8,72 @@
 </head>
 <body>
     <script>
-        //Get choice from user
-        let userChoice = prompt("Rock, Paper, or Scissors: ");
 
         //Get computer choice
         function getComputerChoice() {
-            let random = Math.floor(Math.random() * 3);
-            let choices = ["Rock", "Paper", "Scissors"]
-            let computerChoice = choices[random];
+            //Get random number between 0 and 3
+            const random = Math.floor(Math.random() * 3);
+            //Define array to hold choices
+            const choices = ["rock", "paper", "scissors"];
+            //Use random number to choose from array
+            const computerChoice = choices[random];
+            //Return choice
             return computerChoice;
         }
 
-        
-            //returns choice
         //Play round that takes user (case insensitive) and computer choice 
-            //returns winner
+        function playRound(playerSelection, computerSelection) {
+            //Make player selection all lower case
+            playerSelection = playerSelection.toLowerCase();
+
+            if (playerSelection === "rock") {
+                if (computerSelection === "paper") {
+                    return("You lose! Paper beats Rock")
+                }
+                else if (computerSelection === "scissors") {
+                    return("You win! Rock beats Scissors")
+                }
+                else {
+                    return("It's a tie!")
+                }
+            }
+            else if (playerSelection === "paper") {
+                if (computerSelection === "rock") {
+                    return("You win! Paper beats Rock")
+                }
+                else if (computerSelection === "scissors") {
+                    return("You lose! Scissors beat Paper")
+                }
+                else {
+                    return("It's a tie!")
+                }
+            }
+            else if (playerSelection === "scissors") {
+                if (computerSelection === "paper") {
+                    return("You win! Scissors beat Paper")
+                }
+                else if (computerSelection === "rock") {
+                    return"You lose! Rock beats Scissors")
+                }
+                else {
+                    return("It's a tie!")
+                }
+            }
+        }
         //Game to call play round 5x
-            //use console log to display results and winner at end
+        function game() {
+            for (let i = 0; i > 5; i++){
+                let userScore = 0;
+                let cpuScore = 0;
+                let tie = 0;
+
+                let winner = playRound(userChoice, cpuChoice);
+            }
+        }
+
+        //Get choice from user
+        const userChoice = prompt("Rock, Paper, or Scissors: ");
+        const cpuChoice = getComputerChoice();
     </script>
 </body>
 </html>
