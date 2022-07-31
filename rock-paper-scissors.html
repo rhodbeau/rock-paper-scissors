@@ -11,21 +11,28 @@
 
         //Get computer choice
         function getComputerChoice() {
+
             //Get random number between 0 and 3
             const random = Math.floor(Math.random() * 3);
+
             //Define array to hold choices
             const choices = ["rock", "paper", "scissors"];
+
             //Use random number to choose from array
             const computerChoice = choices[random];
+
             //Return choice
             return computerChoice;
         }
 
-        //Play round that takes user (case insensitive) and computer choice 
+
+        //Play round that takes user choice (case insensitive) and computer choice 
         function playRound(playerSelection, computerSelection) {
+            
             //Make player selection all lower case
             playerSelection = playerSelection.toLowerCase();
 
+            //Compare choices and return whether user won or lost
             if (playerSelection === "rock") {
                 if (computerSelection === "paper") {
                     return("You lose! Paper beats Rock")
@@ -53,27 +60,61 @@
                     return("You win! Scissors beat Paper")
                 }
                 else if (computerSelection === "rock") {
-                    return"You lose! Rock beats Scissors")
+                    return("You lose! Rock beats Scissors")
                 }
                 else {
                     return("It's a tie!")
                 }
             }
         }
+
+
         //Game to call play round 5x
         function game() {
-            for (let i = 0; i > 5; i++){
-                let userScore = 0;
-                let cpuScore = 0;
-                let tie = 0;
+            let userScore = 0;
+            let cpuScore = 0;
+            let tie = 0;
+            let userChoice;
+            let cpuChoice;
+            let winner;
 
-                let winner = playRound(userChoice, cpuChoice);
+            //Play 5 rounds
+            for (let i = 0; i < 5; i++){
+                //Get user choice and computer choice
+                userChoice = prompt("Rock, Paper, or Scissors: ");
+                cpuChoice = getComputerChoice();
+
+                //Call function to play a round and save winner in variable
+                winner = playRound(userChoice, cpuChoice);
+
+                //Update scores and ouput the winner of round
+                if (winner.startsWith("You win")){
+                    userScore++;
+                    console.log(winner)
+                }
+                else if (winner.startsWith("You lose")) {
+                    cpuScore++;
+                    console.log(winner)
+                }
+                else {
+                    tie++;
+                    console.log(winner);
+                }
+            }
+
+            //Check scores and ouput winner of game
+            if (userScore > cpuScore) {
+                console.log("YOU WON!")
+            }
+            else if (cpuScore > userScore) {
+                console.log("You lost, sorry.")
+            }
+            else {
+                console.log("It ends in a tie. Not bad.")
             }
         }
 
-        //Get choice from user
-        const userChoice = prompt("Rock, Paper, or Scissors: ");
-        const cpuChoice = getComputerChoice();
+        game();
     </script>
 </body>
 </html>
