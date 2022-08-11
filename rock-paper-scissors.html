@@ -8,7 +8,7 @@
 </head>
 <body>
 
-
+    <h3>First to 5 wins</h3>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
@@ -48,50 +48,63 @@
             if (playerSelection === "rock") {
                 if (computerSelection === "paper") {
                     cpuTally++;
-                    results.textContent = "You lose! Paper beats Rock";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou lose! Paper beats Rock";
                 }
                 else if (computerSelection === "scissors") {
                     userTally++;
-                    results.textContent = "You win! Rock beats Scissors";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou win! Rock beats Scissors";
                 }
                 else {
-                    results.textContent = "It's a tie!";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nIt's a tie!\r\n";
                 }
             }
             else if (playerSelection === "paper") {
                 if (computerSelection === "rock") {
                     userTally++;
-                    results.textContent = "You win! Paper beats Rock\r\n";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou win! Paper beats Rock\r\n";
                 }
                 else if (computerSelection === "scissors") {
                     cpuTally++;
-                    results.textContent = "You lose! Scissors beat Paper";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou lose! Scissors beat Paper\r\n";
                 }
                 else {
-                    results.textContent = "It's a tie!";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nIt's a tie!\r\n";
                 }
             }
             else if (playerSelection === "scissors") {
                 if (computerSelection === "paper") {
                     userTally++;
-                    results.textContent = "You win! Scissors beat Paper";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou win! Scissors beat Paper\r\n";
                 }
                 else if (computerSelection === "rock") {
                     cpuTally++;
-                    results.textContent = "You lose! Rock beats Scissors";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nYou lose! Rock beats Scissors\r\n";
                 }
                 else {
-                    results.textContent = "It's a tie!";
-                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                    results.textContent += "\r\nIt's a tie!\r\n";
                 }
+            }
+
+            if (userTally == 5){
+                results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                results.textContent += '\r\nWINNER WINNER CHICKEN DINNER!';
+                userTally = 0;
+                cpuTally = 0;
+            }
+            else if (cpuTally == 5){
+                results.textContent = `User: ${userTally} Computer: ${cpuTally}`;
+                results.textContent += '\r\nSorry, you lost. Better luck next time!';
+                userTally = 0;
+                cpuTally = 0;
             }
         }
 
