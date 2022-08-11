@@ -7,7 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
+    <div class="results" style="white-space: pre-line;"></div>
+
     <script>
+
+        let results = document.querySelector('.results');
+        let userTally = 0;
+        let cpuTally = 0;
 
         //Get computer choice
         function getComputerChoice() {
@@ -35,87 +47,63 @@
             //Compare choices and return whether user won or lost
             if (playerSelection === "rock") {
                 if (computerSelection === "paper") {
-                    return("You lose! Paper beats Rock")
+                    cpuTally++;
+                    results.textContent = "You lose! Paper beats Rock";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else if (computerSelection === "scissors") {
-                    return("You win! Rock beats Scissors")
+                    userTally++;
+                    results.textContent = "You win! Rock beats Scissors";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else {
-                    return("It's a tie!")
+                    results.textContent = "It's a tie!";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
             }
             else if (playerSelection === "paper") {
                 if (computerSelection === "rock") {
-                    return("You win! Paper beats Rock")
+                    userTally++;
+                    results.textContent = "You win! Paper beats Rock\r\n";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else if (computerSelection === "scissors") {
-                    return("You lose! Scissors beat Paper")
+                    cpuTally++;
+                    results.textContent = "You lose! Scissors beat Paper";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else {
-                    return("It's a tie!")
+                    results.textContent = "It's a tie!";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
             }
             else if (playerSelection === "scissors") {
                 if (computerSelection === "paper") {
-                    return("You win! Scissors beat Paper")
+                    userTally++;
+                    results.textContent = "You win! Scissors beat Paper";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else if (computerSelection === "rock") {
-                    return("You lose! Rock beats Scissors")
+                    cpuTally++;
+                    results.textContent = "You lose! Rock beats Scissors";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
                 else {
-                    return("It's a tie!")
+                    results.textContent = "It's a tie!";
+                    results.textContent += `User: ${userTally} Computer: ${cpuTally}`;
                 }
             }
         }
 
+        const btns = document.querySelectorAll('button');
 
-        //Game to call play round 5x
-        function game() {
-            //initialize variables
-            let userScore = 0;
-            let cpuScore = 0;
-            let tie = 0;
-            let userChoice;
-            let cpuChoice;
-            let winner;
+        btns.forEach((button) => {
+            button.addEventListener('click', () => {
+                playRound(button.id, getComputerChoice());
+            });
+        });
 
-            //Play 5 rounds
-            for (let i = 0; i < 5; i++){
-                //Get user choice and computer choice
-                userChoice = prompt("Rock, Paper, or Scissors: ");
-                cpuChoice = getComputerChoice();
 
-                //Call function to play a round and save winner in variable
-                winner = playRound(userChoice, cpuChoice);
-
-                //Update scores and ouput the winner of round
-                if (winner.startsWith("You win")){
-                    userScore++;
-                    console.log(winner);
-                }
-                else if (winner.startsWith("You lose")) {
-                    cpuScore++;
-                    console.log(winner);
-                }
-                else {
-                    tie++;
-                    console.log(winner);
-                }
-            }
-
-            //Check scores and ouput winner of game
-            if (userScore > cpuScore) {
-                console.log("YOU WON!");
-            }
-            else if (cpuScore > userScore) {
-                console.log("You lost, sorry.");
-            }
-            else {
-                console.log("It ends in a tie. Not bad.");
-            }
-        }
-
-        game();
     </script>
 </body>
 </html>
